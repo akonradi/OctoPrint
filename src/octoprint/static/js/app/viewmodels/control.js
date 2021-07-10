@@ -39,8 +39,7 @@ $(function () {
 
         self.webcamDisableTimeout = undefined;
         self.webcamLoaded = ko.observable(false);
-        self.webcamMjpgEnabled = ko.observable(false);
-        self.webcamHlsEnabled = ko.observable(false);
+        self.webcamViewEnabled = ko.observable(null);
         self.webcamError = ko.observable(false);
 
         self.keycontrolActive = ko.observable(false);
@@ -699,8 +698,7 @@ $(function () {
                 self.webcamError(false);
                 webcamImage.attr("src", newSrc);
 
-                self.webcamHlsEnabled(false);
-                self.webcamMjpgEnabled(true);
+                self.webcamViewEnabled("mjpg");
             }
         };
 
@@ -715,8 +713,7 @@ $(function () {
                 hls.attachMedia(video);
             }
 
-            self.webcamMjpgEnabled(false);
-            self.webcamHlsEnabled(true);
+            self.webcamViewEnabled("hls");
         };
     }
 
